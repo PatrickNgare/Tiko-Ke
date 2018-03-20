@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 
 
@@ -8,6 +9,7 @@ class Profile(models.Model):
     photo=models.ImageField(upload_to='avatars/',blank=True,null=True)
     bio=models.TextField(max_length=250)
     user=models.ForeignKey(User)
+    email=models.EmailField(null=True, blank=True, unique=True)
     update_time = models.DateTimeField(auto_now_add=True, null=True)
 
 
@@ -28,3 +30,12 @@ class Event(models.Model):
     Event_date=models.DateField()
     Event_time=models.TimeField()
 
+
+
+#creat user profile on register 
+def create_profile(sender, **kwargs):
+    if kwargs['created']:
+        profile = Profile.objects.create(user=kwargs['instance'])
+
+
+post_save.connect(create_profile, sender=User)
