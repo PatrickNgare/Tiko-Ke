@@ -10,6 +10,7 @@ class Profile(models.Model):
     bio=models.TextField(max_length=250)
     user=models.ForeignKey(User)
     email=models.EmailField(null=True, blank=True, unique=True)
+    phone_number=models.PositiveIntegerField(default=+254720000000)
     update_time = models.DateTimeField(auto_now_add=True, null=True)
 
 
@@ -20,6 +21,13 @@ class EventType(models.Model):
     
     def __str__(self):
         return self.name
+
+class Tags(models.Model):
+    name = models.CharField(max_length =30)
+
+    def __str__(self):
+        return self.name
+
 
 
 class Event(models.Model):
@@ -34,6 +42,8 @@ class Event(models.Model):
     location = models.CharField(max_length=30, blank=True)
     Event_date=models.DateField()
     Event_time=models.TimeField()
+    tags = models.ManyToManyField(Tags)
+
 
     def __str__(self):
         return self.name
