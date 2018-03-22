@@ -3,7 +3,7 @@
 
 body {
 background: #DFC2F2;
-	background-image: linear-gradient( 135deg, #F5F5F5 10%, #F5F5F5 100%);
+	background-image: linear-gradient( 135deg,	#f2f2f2 10%,	#f2f2f2 100%);
 	background-attachment: fixed;	
 	background-size: cover;
 	}
@@ -65,7 +65,7 @@ background: #DFC2F2;
 
 
 @keyframes chan-sh {
-	from  {content: 'Buy Now';}
+	from  {content: 'Book Now';}
 	to  {content: 'New';}
 	
 }
