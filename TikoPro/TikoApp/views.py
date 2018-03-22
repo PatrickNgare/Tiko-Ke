@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from . models import Profile,EventType,Event
+from django.contrib.auth.decorators import login_required
+
 
 
 
@@ -10,6 +12,7 @@ def index(request):
     return render(request,'temps/index.html',{"events": events})
 
 
+@login_required(login_url='/accounts/login/')
 def description(request,id):
 
 
