@@ -10,7 +10,6 @@ class Profile(models.Model):
     bio=models.TextField(max_length=250)
     user=models.ForeignKey(User)
     email=models.EmailField(null=True, blank=True, unique=True)
-    phone_number=models.PositiveIntegerField(default=+254720000000)
     update_time = models.DateTimeField(auto_now_add=True, null=True)
 
 
@@ -34,7 +33,7 @@ class Event(models.Model):
     eventtype=models.ForeignKey(EventType,related_name='events',on_delete=models.CASCADE)
     name=models.CharField(max_length=100,)
     description=models.TextField()
-    price=models.DecimalField(max_digits=10,decimal_places=2,default=0.00)
+    price=models.DecimalField(max_digits=16,decimal_places=2,default=0.00)
     available=models.BooleanField(default=True)
     tickets= models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -43,6 +42,16 @@ class Event(models.Model):
     Event_date=models.DateField()
     Event_time=models.TimeField()
     tags = models.ManyToManyField(Tags)
+
+    class Meta:
+        ordering = ['Event_date']
+
+
+
+    @classmethod
+    def search_event(cls, search_term):
+        event = cls.objects.filter(name__icontains=search_term)
+        return event    
 
 
     def __str__(self):
