@@ -23,3 +23,18 @@ def description(request,id):
 
 
     return render(request ,'temps/descritpion.html',{"single":single})
+
+
+def search(request):
+    
+    if 'event' in request.GET and request.GET["event"]:
+        search_term = request.GET.get("event")
+        searched_event = Event.search_event(search_term)
+        message = f"{search_term}"
+        
+
+        return render(request, 'temps/search.html',{"message":message,"searched_event": searched_event})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'temps/search.html',{"message":message})    
