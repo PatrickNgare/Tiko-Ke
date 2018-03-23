@@ -90,11 +90,10 @@ background: #DFC2F2;
 
 /* control */
 
-.control{
-	position: absolute;
-	bottom: 20%;
-	left: 22.8%;
-	
+.control {
+    position: absolute;
+    bottom: 0%;
+    left: 22.8%;
 }
 /* the Button */
 .btn {
