@@ -1,21 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'index'%}">Tiko KE </a>
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light"style="background-color: #dee2e6;>
+  <a class="navbar-brand" href="{% url 'index' %}">
+    <img src="{% static "img/Tiko.jpg" %}" width="100" height="70" class="d-inline-block align-top" alt="img">
+  
+  </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+ 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'index'%}">Home <span class="sr-only">(current)</span></a>
         </li>
         
       </ul>
       
-      <form class="form-inline" role="search" action="# ">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search user"name="business">
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+      <form class="form-inline" role="search" action="{% url 'search_results' %} ">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search user"name="event">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
        
         
            
