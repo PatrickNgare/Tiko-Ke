@@ -1,0 +1,57 @@
+{% extends 'temps/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+{{ block.super }}
+<div class="container">
+        {% for search in searched_event %}
+
+        <div class="card card-cascade wider reverse my-4">
+
+                <!--Card image-->
+                <div class="view overlay">
+                    <img src="{{search.image.url}}" class="img-fluid">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <!--/Card image-->
+            
+                <!--Card content-->
+                <div class="card-body text-center">
+                    <!--Title-->
+                    <h4 class="card-title"><strong>{{search.name}} </strong></h4>
+                    <h5 class="indigo-text"><strong>Photography</strong></h5>
+            
+                    <p class="card-text">{{search.description}} </p>
+                    <p class="card-text" >Price:{{search.price}}/=</p>
+                    <p class="card-text">Ticket Available:{{search.tickets}}</p>
+                    <p class="card-text">Location:{{search.location}}</p>
+                    <p class="card-text">Event Date:{{search.Event_date}}</p>
+                    <p class="card-text">Event Time:{{search.Event_time}}</p>
+                    <!--Linkedin-->
+                    <a class="icons-sm li-ic"><i class="fa fa-linkedin"> </i></a>
+                    <!--Twitter-->
+                    <a class="icons-sm tw-ic"><i class="fa fa-twitter"> </i></a>
+                    <!--Dribbble-->
+                    <a class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a>
+            
+                </div>
+                <!--/.Card content-->
+            
+            </div>
+            
+            {% endfor %}
+</div>
+ 
+
+
+
+
+
+    
+
+
+
+{%endblock%}
